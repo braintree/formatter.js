@@ -257,10 +257,6 @@ var utils = function () {
           'downarrow': {
             'which': 0,
             'keyCode': 40
-          },
-          'F5': {
-            'which': 116,
-            'keyCode': 116
           }
         };
       return utils.getMatchingKey(which, keyCode, keys);
