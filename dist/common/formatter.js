@@ -69,6 +69,9 @@ function Formatter(el, opts) {
   utils.addListener(self.el, 'keypress', function (evt) {
     self._keyPress(evt);
   });
+  utils.addListener(self.el, 'input', function (evt) {
+    self._keyPress(evt);
+  });
   utils.addListener(self.el, 'paste', function (evt) {
     self._paste(evt);
   });
