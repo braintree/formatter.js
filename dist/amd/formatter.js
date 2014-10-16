@@ -26,6 +26,18 @@ var inptRegs = {
   '*': /[A-Za-z0-9]/
 };
 
+function _needsInputEvent() {
+  var ua = navigator.userAgent;
+
+  if (ua.match(/Android/i)) {
+    var matches = ua.match(/Chrome\/(\d{2})\./i);
+
+    if (matches && Number(matches[matches.length - 1]) <= 31) {
+      return true;
+    }
+  }
+}
+
 //
 // Class Constructor - Called with new Formatter(el, opts)
 // Responsible for setting up required instance variables, and
@@ -71,9 +83,13 @@ function Formatter(el, opts) {
   utils.addListener(self.el, 'keypress', function (evt) {
     self._keyPress(evt);
   });
-  utils.addListener(self.el, 'input', function (evt) {
-    self._keyPress(evt);
-  });
+
+  if (_needsInputEvent()) {
+    utils.addListener(self.el, 'input', function (evt) {
+      self._keyPress(evt);
+    });
+  }
+
   utils.addListener(self.el, 'paste', function (evt) {
     self._paste(evt);
   });

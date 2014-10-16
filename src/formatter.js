@@ -30,7 +30,7 @@ function _needsInputEvent() {
   var ua = navigator.userAgent;
 
   if (ua.match(/Android/i)) {
-    var matches = ua.match(/Chrome\/(\d{2})\./i)
+    var matches = ua.match(/Chrome\/(\d{2})\./i);
 
     if (matches && Number(matches[matches.length - 1]) <= 31) {
       return true;
@@ -84,7 +84,7 @@ function Formatter(el, opts) {
     self._keyPress(evt);
   });
 
-  if (_needsInputEvent() {
+  if (_needsInputEvent()) {
     utils.addListener(self.el, 'input', function (evt) {
       self._keyPress(evt);
     });
